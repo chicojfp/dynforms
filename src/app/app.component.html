@@ -1,18 +1,17 @@
 <div class="flex-container">
+  <textarea matInput class="text-full" rows="10" [(ngModel)]="config" style="margin: 10px; border:solid 1px orange; width: 80vw;">  </textarea>
+  <button (click)="updateForm()">Atualizar Formulário</button>
   <div class="form">
     <div style="text-align:center">
       <h1>
-        Registration Form
+        Formulário de cadastro
       </h1>
     </div>
     <dynamic-form [fields]="regConfig" (submit)="submit($event)">
     </dynamic-form>
-    <div class="margin-top">
-      {{ form.value | json }}
-    </div>
   </div>
-  <textarea class="text-full" [(ngModel)]="config">
-
-  </textarea>
 </div>
-<button (click)="updateForm()">Atualizar Formulário</button>
+
+<div class="margin-top">
+  {{ form.value | json }}
+</div>

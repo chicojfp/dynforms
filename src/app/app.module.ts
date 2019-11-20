@@ -14,8 +14,6 @@ import { CheckboxComponent } from "./components/checkbox/checkbox.component";
 import { DynamicFieldDirective } from "./components/dynamic-field/dynamic-field.directive";
 import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
 
-import { NgJsonEditorModule } from 'ang-jsoneditor';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,8 +31,7 @@ import { NgJsonEditorModule } from 'ang-jsoneditor';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule,
-    NgJsonEditorModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

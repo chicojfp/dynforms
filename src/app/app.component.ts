@@ -102,23 +102,24 @@ export class AppComponent implements OnInit {
     //     }
     //   ]
     // },
-    // {
-    //   type: "select",
-    //   label: "Country",
-    //   name: "country",
-    //   value: "UK",
-    //   options: ["India", "UAE", "UK", "US"]
-    // },
-    // {
-    //   type: "checkbox",
-    //   label: "Accept Terms",
-    //   name: "term",
-    //   value: true
-    // },
-    // {
-    //   type: "button",
-    //   label: "Save"
-    // }
+    ,{
+      type: "select",
+      // label: "Country",
+      name: "country",
+      // value: "UK",
+      options: ["India", "UAE", "UK", "US"]
+    },
+    {
+      type: "checkbox",
+      label: "Accept Terms",
+      name: "term",
+      value: true
+    },
+    {
+      type: "button",
+      label: "Save",
+      name:"Save"
+    }
   ];
 
   config = '';
