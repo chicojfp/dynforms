@@ -6,6 +6,7 @@ body {
 .demo-full-width {
   /* width: 100%; */
   margin: 10px;
+  flex-grow: 1;
 }
 .margin-top {
   margin-top: 15px;
@@ -33,4 +34,21 @@ body {
 .text-full {
   width: 50vw;
   margin: 20px;
+}
+
+.dynamic-form {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-content: space-around;
+  justify-content: space-between;
+}
+
+.dyn-flex-item{
+  flex-grow: 1;
+}
+
+.input-field{
+  width: 30vw;
 }
