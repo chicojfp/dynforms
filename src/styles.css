@@ -50,5 +50,16 @@ body {
 }
 
 .input-field{
-  width: 30vw;
+  width: 50vw;
+  max-width: 500px;
+}
+
+.select-field{
+  width: 40vw;
+  max-width: 500px;
+}
+
+.radio-field{
+  width: 60vw;
+  max-width: 500px;
 }

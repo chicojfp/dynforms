@@ -15,6 +15,7 @@ import {
   MatCheckboxModule,
   MatRadioModule
 } from "@angular/material";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {
     MatSelectModule,
     MatOptionModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule
   ],
   exports: [
     MatButtonModule,

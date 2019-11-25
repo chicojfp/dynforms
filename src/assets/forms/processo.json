@@ -1,0 +1,21 @@
+[
+    {
+        "name": "nr",
+        "label": "Informe número do processo",
+        "req": true
+    },
+    {
+        "name": "classe",
+        "label": "Selecione a classe judicial",
+        "type": "select",
+        "req": true,
+        "dataSource": {
+            "source": "http://localhost:4200/assets/classes.json"
+        }
+    },
+    {
+        "type": "button",
+        "label": "Entrar",
+        "name": "entrar"
+    }
+]

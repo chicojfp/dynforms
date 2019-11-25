@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
       // label: "Username",
       // inputType: "text",
       name: "name",
+      label: "Informeu seu nome completo",
+      req: true
       // validations: [
       //   {
       //     name: "required",
@@ -30,19 +32,13 @@ export class AppComponent implements OnInit {
       //     message: "Accept only text"
       //   }
       // ]
-    }
-    // ,
+    },
     // {
     //   type: "input",
-    //   label: "Sobrenome",
+    //   label: "Email",
     //   inputType: "text",
     //   name: "name",
     //   validations: [
-    //     {
-    //       name: "required",
-    //       validator: Validators.required,
-    //       message: "Name Required"
-    //     },
     //     {
     //       name: "pattern",
     //       validator: Validators.pattern("^[a-zA-Z]+$"),
@@ -50,26 +46,20 @@ export class AppComponent implements OnInit {
     //     }
     //   ]
     // },
-    // {
-    //   type: "input",
-    //   label: "Email Address",
-    //   inputType: "email",
-    //   name: "email",
-    //   validations: [
-    //     {
-    //       name: "required",
-    //       validator: Validators.required,
-    //       message: "Email Required"
-    //     },
-    //     {
-    //       name: "pattern",
-    //       validator: Validators.pattern(
-    //         "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$"
-    //       ),
-    //       message: "Invalid email"
-    //     }
-    //   ]
-    // },
+    {
+      type: "input",
+      label: "Email Address",
+      inputType: "email",
+      name: "email",
+      req: true,
+      validations: [
+        {
+          name: "pattern",
+          pattern: "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+          message: "Email inválido."
+        }
+      ]
+    },
     // {
     //   type: "input",
     //   label: "Password",
@@ -83,35 +73,33 @@ export class AppComponent implements OnInit {
     //     }
     //   ]
     // },
-    // {
-    //   type: "radiobutton",
-    //   label: "Gender",
-    //   name: "gender",
-    //   options: ["Male", "Female"],
-    //   value: "Male"
-    // },
-    // {
-    //   type: "date",
-    //   label: "DOB",
-    //   name: "dob",
-    //   validations: [
-    //     {
-    //       name: "required",
-    //       validator: Validators.required,
-    //       message: "Date of Birth Required"
-    //     }
-    //   ]
-    // },
-    ,{
+    {
+      type: "radiobutton",
+      label: "Gender",
+      name: "gender",
+      dataSource: {
+        options: ["Male", "Female"],
+      },
+      value: "Male"
+    },
+    {
+      type: "date",
+      label: "DOB",
+      name: "dob",
+      req: true
+    },
+    {
       type: "select",
       // label: "Country",
       name: "country",
       // value: "UK",
-      options: ["India", "UAE", "UK", "US"]
+      dataSource: {
+        options: ["India", "UAE", "UK", "US"]
+      }
     },
     {
       type: "checkbox",
-      label: "Accept Terms",
+      label: "Aceito os termos",
       name: "term",
       value: true
     },
