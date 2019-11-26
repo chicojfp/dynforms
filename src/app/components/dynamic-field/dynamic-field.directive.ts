@@ -1,11 +1,13 @@
-import { FieldParserService } from './../../field-parser.service';
+import { GenericSourceService } from './../../GenericSource.service';
+import { HttpClient } from '@angular/common/http';
+import { CountryService } from './../../country.service';
 import {
   ComponentFactoryResolver,
-  ComponentRef,
   Directive,
   Input,
   OnInit,
-  ViewContainerRef
+  ViewContainerRef,
+  PlatformRef
 } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { FieldConfig } from "../../field.interface";
@@ -30,10 +32,14 @@ const componentMapper = {
 export class DynamicFieldDirective implements OnInit {
   @Input() field: FieldConfig;
   @Input() group: FormGroup;
+  @Input() service: string;
   componentRef: any;
   constructor(
     private resolver: ComponentFactoryResolver,
-    private container: ViewContainerRef
+    private container: ViewContainerRef,
+    private app: PlatformRef,
+    private service2: CountryService,
+    private http: HttpClient
   ) {}
   ngOnInit() {
     const factory = this.resolver.resolveComponentFactory(
@@ -42,5 +48,31 @@ export class DynamicFieldDirective implements OnInit {
     this.componentRef = this.container.createComponent(factory);
     this.componentRef.instance.field = this.field;
     this.componentRef.instance.group = this.group;
+
+    // console.log(this.field.datasource || this.field.options);
+    if (this.field.datasource) {
+      if (this.field.datasource.name) {
+        const injector = this.componentRef.injector;
+        const country = injector.get(this.field.datasource.name);
+        this.componentRef.instance.dataSource = country;
+      } else if (this.field.options || this.field.datasource.source) {
+        const g = this.createGenericDataSource(this.field.datasource.source, undefined);
+        this.componentRef.instance.dataSource = g;
+      }
+    }
+
+    if (this.field.options) {
+      const g = this.createGenericDataSource(undefined, this.field.options);
+      this.componentRef.instance.dataSource = g;
+    }
+
+    console.log(this.componentRef.instance.dataSource);
+  }
+
+  private createGenericDataSource(url: string, itens: any[]): GenericSourceService {
+    const g = new GenericSourceService(this.http);
+    g.url = url;
+    g.itens = itens;
+    return g;
   }
 }

@@ -18,13 +18,19 @@ export class FieldParserService {
       if (!f.inputType) f.inputType = 'text';
       if (!f.label) f.label = f.name;
 
+      f.validations = (f.validations || []);
       if (f.req) {
-        f.validations = (f.validations || []);
         f.validations.push({name: "required", validator: Validators.required, message: "Campo obrigatório"});
       }
+      f.validations.forEach(v => {
+        if (v.padrao) {
+          v.name = "pattern";
+          v.validator = Validators.pattern(v.padrao);
+        }
+      });
     });
 
-    console.log(fields);
+    // console.log(fields);
 
     return fields;
 

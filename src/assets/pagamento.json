@@ -1,0 +1,48 @@
+[
+    {
+        "name": "name",
+        "label": "Número do Cartão",
+        "req": true,
+        "validations": [
+          {
+              "name": "required",
+              "padrao": "^[0-9]{16}$",
+              "message": "Número de cartão inválido (São necessários 16 dígitos)."
+          }
+      ]
+    },
+    {
+        "name": "validade",
+        "label": "Mês da Validade",
+        "req": true,
+        "validations": [
+          {
+              "name": "required",
+              "padrao": "^[0-9]{2}$",
+              "message": "Mês de validade."
+          }
+      ]
+    },
+    {
+        "name": "ano",
+        "label": "Ano da Validade",
+        "req": true,
+        "validations": [
+          {
+              "name": "required",
+              "padrao": "^[0-9]{2}$",
+              "message": "Ano de validade."
+          }
+      ]
+    },
+    {
+        "name": "name",
+        "label": "Nome do Cartão"
+    },
+{
+"name":"tipoCartao",
+"label": "Tipo do cartão",
+"type": "select",
+"options": ["MasterCard", "Visa", "Elo"]
+}
+]

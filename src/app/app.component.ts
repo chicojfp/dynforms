@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
       // type: "input",
       // label: "Username",
       // inputType: "text",
-      name: "name",
+      name: "name", label: "Nome Completo", "req": true
       // validations: [
       //   {
       //     name: "required",
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
       //     message: "Accept only text"
       //   }
       // ]
-    }
+    },
     // ,
     // {
     //   type: "input",
@@ -83,31 +83,51 @@ export class AppComponent implements OnInit {
     //     }
     //   ]
     // },
-    // {
-    //   type: "radiobutton",
-    //   label: "Gender",
-    //   name: "gender",
-    //   options: ["Male", "Female"],
-    //   value: "Male"
-    // },
-    // {
-    //   type: "date",
-    //   label: "DOB",
-    //   name: "dob",
-    //   validations: [
-    //     {
-    //       name: "required",
-    //       validator: Validators.required,
-    //       message: "Date of Birth Required"
-    //     }
-    //   ]
-    // },
-    ,{
+    {
+      name: "CPF",
+      validations: [
+            {
+              name: "required",
+              padrao: "^[0-9]{11}$",
+              message: "Informe um CPF válido."
+            }
+      ]
+    },
+    {
+      type: "radiobutton",
+      label: "Sexo",
+      name: "sexo",
+      options: ["Masculino", "Feminino"]
+      // datasource: {
+      //   name: "CountryService",
+      //   filters: [
+      //     {key:"", value: ""}
+      //   ]
+      // }
+    },
+    {
+      type: "date",
+      label: "Data de Nascimento",
+      name: "dob",
+      req: true
+    },
+    {
       type: "select",
-      // label: "Country",
+      label: "Selecione seu País",
       name: "country",
-      // value: "UK",
-      options: ["India", "UAE", "UK", "US"]
+      req: true,
+      datasource: {
+        source: "http://localhost:4200/assets/paises.json"
+      }
+    },
+    {
+      type: "select",
+      label: "Selecione seu Estado",
+      name: "state",
+      req: true,
+      datasource: {
+        source: "http://localhost:4200/assets/estados.json"
+      }
     },
     {
       type: "checkbox",
@@ -132,7 +152,7 @@ export class AppComponent implements OnInit {
 
   public updateForm() {
     this.regConfig = JSON.parse(this.config);
-    console.log(this.regConfig);
+    // console.log(this.regConfig);
   }
 
   ngOnInit() {

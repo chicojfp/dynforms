@@ -1,0 +1,19 @@
+[
+    {
+        "name": "name",
+        "label": "Nome Completo",
+        "req": true
+    },
+   {
+        "type": "input",
+        "label": "Senha",
+        "name": "senha",
+        "inputType": "password",
+         "req": true
+    },
+    {
+        "type": "button",
+        "label": "Login",
+        "name": "Save"
+    }
+]

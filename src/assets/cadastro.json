@@ -1,0 +1,61 @@
+[
+    {
+        "name": "name",
+        "label": "Número do Cartão",
+        "req": true
+    },
+    {
+        "name": "CPF",
+        "validations": [
+            {
+                "name": "required",
+                "padrao": "^[0-9]{11}$",
+                "message": "Informe um CPF válido."
+            }
+        ]
+    },
+    {
+        "type": "radiobutton",
+        "label": "Sexo",
+        "name": "sexo",
+        "options": [
+            "Masculino",
+            "Feminino"
+        ]
+    },
+    {
+        "type": "date",
+        "label": "Data de Nascimento",
+        "name": "dob",
+        "req": true
+    },
+    {
+        "type": "select",
+        "label": "Selecione seu País",
+        "name": "country",
+        "req": true,
+        "datasource": {
+            "source": "http://localhost:4200/assets/paises.json"
+        }
+    },
+    {
+        "type": "select",
+        "label": "Selecione seu Estado",
+        "name": "state",
+        "req": true,
+        "datasource": {
+            "source": "http://localhost:4200/assets/estados.json"
+        }
+    },
+    {
+        "type": "checkbox",
+        "label": "Aceito os temos.",
+        "name": "term",
+        "value": true
+    },
+    {
+        "type": "button",
+        "label": "Salvar",
+        "name": "Save"
+    }
+]

@@ -43,6 +43,8 @@ body {
   align-content: stretch;
   align-content: space-around;
   justify-content: space-between;
+  /* grid-area: main;
+  grid-auto-columns: auto; */
 }
 
 .dyn-flex-item{
@@ -50,5 +52,13 @@ body {
 }
 
 .input-field{
-  width: 30vw;
+  width: 90vw;
+}
+
+.select-field{
+  width: 90vw;
+}
+
+.spaced-item {
+  margin: 10px;
 }
