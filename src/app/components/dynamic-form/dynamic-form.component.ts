@@ -21,6 +21,7 @@ import { FieldConfig, Validator } from "../../field.interface";
   template: `
   <form class="dynamic-form" [formGroup]="form" (submit)="onSubmit($event)">
   <ng-container class="dyn-flex-item" *ngFor="let field of fields;" dynamicField [field]="field" [group]="form">
+  <br>
   </ng-container>
   </form>
   `,

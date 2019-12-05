@@ -37,7 +37,7 @@ body {
 }
 
 .dynamic-form {
-  display: flex;
+  /* display: flex; */
   flex-flow: row;
   flex-wrap: wrap;
   align-content: stretch;
@@ -62,4 +62,11 @@ body {
 .radio-field{
   width: 60vw;
   max-width: 500px;
+}
+
+.text-form-value {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: larger;
+  margin: 10px; border:solid 1px orange; 
+  width: 80vw;
 }

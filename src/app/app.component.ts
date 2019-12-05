@@ -1,12 +1,12 @@
-import { Component, ViewChild, OnInit } from "@angular/core";
-import { Validators } from "@angular/forms";
-import { FieldConfig } from "./field.interface";
-import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { FieldConfig } from './field.interface';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
 
@@ -14,99 +14,138 @@ export class AppComponent implements OnInit {
 
   regConfig: FieldConfig[] = [
     {
-      // type: "input",
-      // label: "Username",
-      // inputType: "text",
-      name: "name",
-      label: "Informeu seu nome completo",
+      // type: 'input',
+      // label: 'Username',
+      // inputType: 'text',
+      name: 'name',
+      label: 'Informeu seu nome completo',
       req: true
       // validations: [
       //   {
-      //     name: "required",
+      //     name: 'required',
       //     validator: Validators.required,
-      //     message: "Name Required"
+      //     message: 'Name Required'
       //   },
       //   {
-      //     name: "pattern",
-      //     validator: Validators.pattern("^[a-zA-Z]+$"),
-      //     message: "Accept only text"
+      //     name: 'pattern',
+      //     validator: Validators.pattern('^[a-zA-Z]+$'),
+      //     message: 'Accept only text'
       //   }
       // ]
     },
     // {
-    //   type: "input",
-    //   label: "Email",
-    //   inputType: "text",
-    //   name: "name",
+    //   type: 'input',
+    //   label: 'Email',
+    //   inputType: 'text',
+    //   name: 'name',
     //   validations: [
     //     {
-    //       name: "pattern",
-    //       validator: Validators.pattern("^[a-zA-Z]+$"),
-    //       message: "Accept only text"
+    //       name: 'pattern',
+    //       validator: Validators.pattern('^[a-zA-Z]+$'),
+    //       message: 'Accept only text'
     //     }
     //   ]
     // },
     {
-      type: "input",
-      label: "Email Address",
-      inputType: "email",
-      name: "email",
+      type: 'input',
+      label: 'Email Address',
+      inputType: 'email',
+      name: 'email',
       req: true,
       validations: [
         {
-          name: "pattern",
-          pattern: "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
-          message: "Email inválido."
+          name: 'pattern',
+          pattern: '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$',
+          message: 'Email inválido.'
         }
       ]
     },
+    // {
+    //   type: 'input',
+    //   label: 'Senha',
+    //   inputType: 'password',
+    //   name: 'senha',
+    //   validations: [
+    //     {
+    //       name: 'required',
+    //       validator: Validators.required,
+    //       message: 'Senha Obrigatória.'
+    //     }
+    //   ]
+    // },
     {
-      type: "input",
-      label: "Senha",
-      inputType: "password",
-      name: "senha",
-      validations: [
-        {
-          name: "required",
-          validator: Validators.required,
-          message: "Senha Obrigatória."
-        }
-      ]
-    },
-    {
-      type: "radiobutton",
-      label: "Gênero",
-      name: "genero",
+      type: 'radiobutton',
+      label: 'Gênero',
+      name: 'genero',
       dataSource: {
-        options: ["Male", "Female"],
+        options: ['Masculino', 'Feminino'],
       },
-      value: "Male"
+      value: 'Male'
     },
     {
-      type: "date",
-      label: "Data de Nascimento",
-      name: "dob",
+      type: 'date',
+      label: 'Data de Nascimento',
+      name: 'dob',
       req: true
     },
     {
-      type: "select",
-      label: "País",
-      name: "pais",
-      // value: "UK",
+      name: 'logradouro',
+      label: 'Logradouro',
+      req: true
+    },
+    {
+      name: 'numero',
+      label: 'Número',
+      req: true,
+      validations: [
+        {
+          name: 'pattern',
+          pattern: '^[0-9]+$',
+          message: 'Número inválido.'
+        }
+      ]
+    },
+    {
+      name: 'complemento',
+      label: 'Complemento'
+    },
+    {
+      type: 'select',
+      label: 'Cidade',
+      name: 'cidade',
+      // value: 'UK',
       dataSource: {
-        source: '/assets/classes.json'
+        source: '/assets/cidades.json'
       }
     },
     {
-      type: "checkbox",
-      label: "Aceito os termos",
-      name: "aceitarTermo",
+      type: 'select',
+      label: 'UF',
+      name: 'uf',
+      // value: 'UK',
+      dataSource: {
+        source: '/assets/estados.json'
+      }
+    },
+    {
+      type: 'select',
+      label: 'País',
+      name: 'pais',
+      // value: 'UK',
+      dataSource: {
+        source: '/assets/paises.json'
+      }
+    },
+    {
+      type: 'checkbox',
+      label: 'Aceito os termos',
+      name: 'aceitarTermo',
       value: true
     },
     {
-      type: "button",
-      label: "save",
-      name:"Salvar"
+      type: 'button',
+      label: 'save',
+      name:'Salvar'
     }
   ];
 
@@ -125,5 +164,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.recuperarDados();
+  }
+
+  getCurrentFormValue() {
+    return JSON.stringify(this.form.value, null, '    ');
   }
 }
