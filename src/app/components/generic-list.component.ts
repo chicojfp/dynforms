@@ -7,8 +7,9 @@ export class GenericListComponent {
     ds: GenericDataSourceService;
 
     getList(): Observable<any> {
-        console.log(this.ds.getData());
-        return this.ds.getData();
+        const data = this.ds.getData();
+        // console.log(data);
+        return data;
     }
 
     public getId(value: any): any {

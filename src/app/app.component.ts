@@ -60,23 +60,23 @@ export class AppComponent implements OnInit {
         }
       ]
     },
-    // {
-    //   type: "input",
-    //   label: "Password",
-    //   inputType: "password",
-    //   name: "password",
-    //   validations: [
-    //     {
-    //       name: "required",
-    //       validator: Validators.required,
-    //       message: "Password Required"
-    //     }
-    //   ]
-    // },
+    {
+      type: "input",
+      label: "Senha",
+      inputType: "password",
+      name: "senha",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Senha Obrigatória."
+        }
+      ]
+    },
     {
       type: "radiobutton",
-      label: "Gender",
-      name: "gender",
+      label: "Gênero",
+      name: "genero",
       dataSource: {
         options: ["Male", "Female"],
       },
@@ -84,29 +84,29 @@ export class AppComponent implements OnInit {
     },
     {
       type: "date",
-      label: "DOB",
+      label: "Data de Nascimento",
       name: "dob",
       req: true
     },
     {
       type: "select",
-      // label: "Country",
-      name: "country",
+      label: "País",
+      name: "pais",
       // value: "UK",
       dataSource: {
-        options: ["India", "UAE", "UK", "US"]
+        source: '/assets/classes.json'
       }
     },
     {
       type: "checkbox",
       label: "Aceito os termos",
-      name: "term",
+      name: "aceitarTermo",
       value: true
     },
     {
       type: "button",
-      label: "Save",
-      name:"Save"
+      label: "save",
+      name:"Salvar"
     }
   ];
 

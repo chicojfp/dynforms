@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -12,6 +12,8 @@ export class GenericDataSourceService {
 
   set url(value: string) {
     this._url = value;
+    console.log("URL: " + value);
+    console.log(this.items);
     if (!this.items) {
       this.http.get(this._url).subscribe(items => this.items = items);
     }
@@ -19,8 +21,7 @@ export class GenericDataSourceService {
 
   constructor(private http: HttpClient) { }
 
-  getData() {
-    // console.log(this.items);
+  getData(): Observable<any> {
     return of(this.items);
   }
 }

@@ -1,26 +1,26 @@
 [
     {
-        name: "Classe 1",
-        id: 1
+        "name": "Classe 1",
+        "id": 1
     },
     {
-        name: "Classe 11",
-        id: 11
+        "name": "Classe 11",
+        "id": 11
     },
     {
-        name: "Classe 12",
-        id: 12
+        "name": "Classe 12",
+        "id": 12
     },
     {
-        name: "Classe 13",
-        id: 13
+        "name": "Classe 13",
+        "id": 13
     },
     {
-        name: "Classe 14",
-        id: 14
+        "name": "Classe 14",
+        "id": 14
     },
     {
-        name: "Classe 15",
-        id: 15
+        "name": "Classe 15",
+        "id": 15
     }
 ]

@@ -50,7 +50,9 @@ export class DynamicFieldDirective implements OnInit {
       const ds = this.field.dataSource;
       if (ds.options || ds.source) {
         const g = new GenericDataSourceService(this.http);
-        g.items = ds.options;
+        if (ds.options) {
+          g.items = ds.options;
+        }
         g.url = ds.source;
         this.componentRef.instance.ds = g;
       }
