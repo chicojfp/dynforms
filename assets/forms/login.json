@@ -1,0 +1,25 @@
+[
+    {
+        "name": "name",
+        "label": "Informe seu email",
+        "req": true,
+        "validations": [
+            {
+                "name": "pattern",
+                "pattern": "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+                "message": "Email inválido."
+            }
+        ]
+    },
+    {
+        "name": "senha",
+        "label": "Informe uma nova senha",
+        "req": true,
+        "inputType": "password"
+    },
+    {
+        "type": "button",
+        "label": "Entrar",
+        "name": "entrar"
+    }
+]
