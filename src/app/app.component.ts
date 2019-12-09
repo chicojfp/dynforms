@@ -10,7 +10,7 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+  @ViewChild(DynamicFormComponent, { static: true }) form: DynamicFormComponent;
 
   regConfig: FieldConfig[] = [
     {
