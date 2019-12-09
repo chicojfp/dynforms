@@ -1,8 +1,8 @@
 <div class="flex-container">
   <textarea matInput class="text-full" rows="10" [(ngModel)]="config" style="margin: 10px; border:solid 1px orange; width: 80vw;">  </textarea>
-  <button mat-flat-button  (click)="updateForm()">Atualizar Formulário</button>
+  <button mat-flat-button color="accent" (click)="updateForm()">Atualizar Formulário</button>
   <div style="display: flex; flex-flow: row;">
-      <div class="form">
+      <div class="form" style="flex-grow: 1;">
         <div style="text-align:center">
           <h1>
             Formulário de cadastro
@@ -12,7 +12,7 @@
         </dynamic-form>
       </div>
 
-      <mat-form-field class="text-form-value">
+      <mat-form-field class="text-form-value" style="max-width: 400px;">
         <textarea matInput [value]="getCurrentFormValue()" rows="20">  </textarea>
       </mat-form-field>
       <!-- <div class="margin-top" >
