@@ -1,20 +1,39 @@
+<div style="display: flex; flex-direction: row; justify-content: space-around;">
+  <span (click)="carregar('cadastro')">cadastro</span>
+  <span (click)="carregar('login')">login</span>
+  <span (click)="carregar('processo')">processo</span>
+
+</div>
 <div class="flex-container">
-  <textarea matInput class="text-full" rows="10" [(ngModel)]="config" style="margin: 10px; border:solid 1px orange; width: 80vw;">  </textarea>
-  <button mat-flat-button color="accent" (click)="updateForm()">Atualizar Formulário</button>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <div style="display: flex; flex-direction: column;" >
+        <h3>Definição do formulário</h3>
+        <textarea matInput class="text-full" rows="10" [(ngModel)]="config" style="margin: 10px; border:solid 1px orange; width: 45vw;">  </textarea>
+        <button mat-flat-button color="accent" (click)="updateForm()">Atualizar Formulário</button>
+    </div>
+    <div style="display: flex; flex-direction: column;" >
+        <h3>Valor do formulário</h3>
+        <textarea matInput class="text-full" rows="10" [(ngModel)]="valuesString" style="margin: 10px; border:solid 1px orange; width: 45vw;">  </textarea>
+        <button mat-flat-button color="accent" (click)="loadData()">Carregar Dados</button>
+    </div>
+  </div>
+
   <div style="display: flex; flex-flow: row;">
       <div class="form" style="flex-grow: 1;">
         <div style="text-align:center">
-          <h1>
-            Formulário de cadastro
-          </h1>
+          <h3> Exemplo de formulário </h3>
         </div>
-        <dynamic-form [fields]="regConfig" (submit)="submit($event)">
+        <dynamic-form [fields]="regConfig" (submit)="submit($event)" #dynForm>
         </dynamic-form>
       </div>
 
-      <mat-form-field class="text-form-value" style="max-width: 400px;">
-        <textarea matInput [value]="getCurrentFormValue()" rows="20">  </textarea>
-      </mat-form-field>
+      <div>
+          <h3>Valor atual do Formulário</h3>
+          <mat-form-field class="text-form-value" style="max-width: 400px;">
+            <textarea matInput [value]="getCurrentFormValue()" rows="20">  </textarea>
+          </mat-form-field>
+      </div>
+
       <!-- <div class="margin-top" >
         {{getCurrentFormValue()}}
       </div> -->
