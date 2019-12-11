@@ -75,38 +75,38 @@ body {
 
 
 //palheta de cores padrão
-$md-pallete: (
-    50 : #b4e9ff,
-    100 : #68d2ff,
-    200 : #30c2ff,
-    300 : #00a3e7,
-    400 : #008ec9,
-    500 : #0078aa,
-    600 : #00628b,
-    700 : #004d6d,
-    800 : #00374e,
-    900 : #002230,
-    A100 : #aae6ff,
-    A200 : #44c8ff,
-    A400 : #009cdd,
-    A700 : #008ac3,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #ffffff,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #ffffff,
-        A700 : #ffffff,
-    )
-);
+// $md-pallete: (
+//     50 : #b4e9ff,
+//     100 : #68d2ff,
+//     200 : #30c2ff,
+//     300 : #00a3e7,
+//     400 : #008ec9,
+//     500 : #0078aa,
+//     600 : #00628b,
+//     700 : #004d6d,
+//     800 : #00374e,
+//     900 : #002230,
+//     A100 : #aae6ff,
+//     A200 : #44c8ff,
+//     A400 : #009cdd,
+//     A700 : #008ac3,
+//     contrast: (
+//         50 : #000000,
+//         100 : #000000,
+//         200 : #000000,
+//         300 : #ffffff,
+//         400 : #ffffff,
+//         500 : #ffffff,
+//         600 : #ffffff,
+//         700 : #ffffff,
+//         800 : #ffffff,
+//         900 : #ffffff,
+//         A100 : #000000,
+//         A200 : #000000,
+//         A400 : #ffffff,
+//         A700 : #ffffff,
+//     )
+// );
 
 body{
   margin: 0px;
@@ -114,8 +114,8 @@ body{
 
 
 //definindo composição de cores para o tema: formato (palheta, cor padrão, cor clara, cor escura)
-$app-primary: mat-palette($md-pallete, 500, 300, 700);
-$app-accent:  mat-palette($md-pallete, A400, A200, A700);
+// $app-primary: mat-palette($md-pallete, 500, 300, 700);
+// $app-accent:  mat-palette($md-pallete, A400, A200, A700);
 
 // criando objeto com o tema
 // $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
