@@ -75,7 +75,7 @@ body {
 
 
 //palheta de cores padrão
-$md-pje-pallete: (
+$md-pallete: (
     50 : #b4e9ff,
     100 : #68d2ff,
     200 : #30c2ff,
@@ -114,11 +114,11 @@ body{
 
 
 //definindo composição de cores para o tema: formato (palheta, cor padrão, cor clara, cor escura)
-$pje-app-primary: mat-palette($md-pje-pallete, 500, 300, 700);
-$pje-app-accent:  mat-palette($md-pje-pallete, A400, A200, A700);
+$app-primary: mat-palette($md-pallete, 500, 300, 700);
+$app-accent:  mat-palette($md-pallete, A400, A200, A700);
 
 // criando objeto com o tema
-// $pje-app-theme: mat-light-theme($pje-app-primary, $pje-app-accent, $pje-app-warn);
+// $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 
 snack-bar-container.success {
