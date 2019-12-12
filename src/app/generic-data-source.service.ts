@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -11,9 +12,13 @@ export class GenericDataSourceService {
   items: any;
 
   set url(value: string) {
+
+    let url = '';
+    if (environment.production) {
+      url = 'dynforms/';
+    }
+
     this._url = value;
-    // console.log("URL: " + value);
-    // console.log(this.items);
     if (!this.items) {
       this.http.get(this._url).subscribe(items => this.items = items);
     }

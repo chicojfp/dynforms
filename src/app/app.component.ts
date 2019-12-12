@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FieldConfig } from './field.interface';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -188,8 +189,11 @@ export class AppComponent implements OnInit {
   }
 
   carregar(name: string) {
-    console.log(this.urlAssets);
-    this.http.get<any>(this.urlAssets + '/forms/' + name + '.json').pipe(tap(p => {
+    let url = '';
+    if (environment.production) {
+      url = 'dynforms/';
+    }
+    this.http.get<any>(url + 'assets/forms/' + name + '.json').pipe(tap(p => {
       this.regConfig = p;
       this.recuperarDados();
       // console.log(p)
