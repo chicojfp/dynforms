@@ -1,3 +1,4 @@
+import { Location, PathLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Component, ViewChild, OnInit } from '@angular/core';
@@ -7,14 +8,18 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
 })
 export class AppComponent implements OnInit {
   @ViewChild(DynamicFormComponent, { static: true }) form: DynamicFormComponent;
   valuesString: string;
   config = '';
+  urlAssets = ''
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, location: Location) {
+    this.urlAssets =  location.prepareExternalUrl('/assets/');
+  }
 
   regConfig: FieldConfig[] = [
     {
@@ -187,7 +192,7 @@ export class AppComponent implements OnInit {
     this.http.get<any>('/assets/forms/' + name + '.json').pipe(tap(p => {
       this.regConfig = p;
       this.recuperarDados()
-      console.log(p)
+      // console.log(p)
   })).subscribe();
   }
 }

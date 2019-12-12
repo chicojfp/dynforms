@@ -1,7 +1,8 @@
 <div style="display: flex; flex-direction: row; justify-content: space-around;">
-  <span (click)="carregar('cadastro')">cadastro</span>
-  <span (click)="carregar('login')">login</span>
-  <span (click)="carregar('processo')">processo</span>
+  <h3>Exemplos: </h3>
+  <button mat-stroked-button (click)="carregar('cadastro')">cadastro</button>
+  <button mat-stroked-button (click)="carregar('login')">login</button>
+  <button mat-stroked-button (click)="carregar('processo')">processo</button>
 
 </div>
 <div class="flex-container">
@@ -9,12 +10,12 @@
     <div style="display: flex; flex-direction: column;" >
         <h3>Definição do formulário</h3>
         <textarea matInput class="text-full" rows="10" [(ngModel)]="config" style="margin: 10px; border:solid 1px orange; width: 45vw;">  </textarea>
-        <button mat-flat-button color="accent" (click)="updateForm()">Atualizar Formulário</button>
+        <button mat-flat-button color="primary" (click)="updateForm()">Atualizar Formulário</button>
     </div>
     <div style="display: flex; flex-direction: column;" >
         <h3>Valor do formulário</h3>
         <textarea matInput class="text-full" rows="10" [(ngModel)]="valuesString" style="margin: 10px; border:solid 1px orange; width: 45vw;">  </textarea>
-        <button mat-flat-button color="accent" (click)="loadData()">Carregar Dados</button>
+        <button mat-flat-button color="primary" (click)="loadData()">Carregar Dados</button>
     </div>
   </div>
 

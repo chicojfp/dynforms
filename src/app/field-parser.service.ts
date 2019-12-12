@@ -29,7 +29,7 @@ export class FieldParserService {
       });
     });
 
-    console.log(fields);
+    // console.log(fields);
 
     return fields;
 

@@ -48,7 +48,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
         property.setValue(value[pName]);
       }
 
-      console.log(pName + "   " + value[pName]);
+      // console.log(pName + "   " + value[pName]);
     });
   }
 

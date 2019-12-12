@@ -12,8 +12,8 @@ export class GenericDataSourceService {
 
   set url(value: string) {
     this._url = value;
-    console.log("URL: " + value);
-    console.log(this.items);
+    // console.log("URL: " + value);
+    // console.log(this.items);
     if (!this.items) {
       this.http.get(this._url).subscribe(items => this.items = items);
     }
