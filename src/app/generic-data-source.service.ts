@@ -12,15 +12,7 @@ export class GenericDataSourceService {
   items: any;
 
   set url(value: string) {
-
-    let url = '';
-    if (environment.production) {
-      url = 'dynforms/';
-    }
-
-    console.log("URL: " + url);
-
-    this._url = url + value;
+    this._url = value;
     if (!this.items) {
       this.http.get(this._url).subscribe(items => this.items = items);
     }

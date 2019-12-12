@@ -124,7 +124,7 @@ export class AppComponent implements OnInit {
       name: 'cidade',
       // value: 'UK',
       dataSource: {
-        source: '/assets/cidades.json'
+        source: 'assets/cidades.json'
       }
     },
     {
@@ -133,7 +133,7 @@ export class AppComponent implements OnInit {
       name: 'uf',
       // value: 'UK',
       dataSource: {
-        source: '/assets/estados.json'
+        source: 'assets/estados.json'
       }
     },
     {
@@ -142,7 +142,7 @@ export class AppComponent implements OnInit {
       name: 'pais',
       // value: 'UK',
       dataSource: {
-        source: '/assets/paises.json'
+        source: 'assets/paises.json'
       }
     },
     {
@@ -189,14 +189,7 @@ export class AppComponent implements OnInit {
   }
 
   carregar(name: string) {
-    let url = '';
-    if (environment.production) {
-      // url = 'dynforms/';
-    }
-
-    console.log("URL: " + url);
-
-    this.http.get<any>(url + 'assets/forms/' + name + '.json').pipe(tap(p => {
+    this.http.get<any>('assets/forms/' + name + '.json').pipe(tap(p => {
       this.regConfig = p;
       this.recuperarDados();
       // console.log(p)
