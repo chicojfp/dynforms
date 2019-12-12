@@ -20,43 +20,76 @@
     },
     {
         "type": "radiobutton",
-        "label": "Gender",
-        "name": "gender",
+        "label": "Gênero",
+        "name": "genero",
         "dataSource": {
             "options": [
-                "Male",
-                "Female"
+                "Masculino",
+                "Feminino"
             ]
         },
-        "value": "Male"
+        "value": "Masculino"
     },
     {
         "type": "date",
-        "label": "DOB",
+        "label": "Data de Nascimento",
         "name": "dob",
         "req": true
     },
     {
+        "name": "logradouro",
+        "label": "Logradouro",
+        "req": true
+    },
+    {
+        "name": "numero",
+        "label": "Número",
+        "req": true,
+        "validations": [
+            {
+                "name": "pattern",
+                "pattern": "^[0-9]+$",
+                "message": "Número inválido."
+            }
+        ]
+    },
+    {
+        "name": "complemento",
+        "label": "Complemento"
+    },
+    {
         "type": "select",
-        "name": "country",
+        "label": "Cidade",
+        "name": "cidade",
         "dataSource": {
-            "options": [
-                "India",
-                "UAE",
-                "UK",
-                "US"
-            ]
+            "source": "/assets/cidades.json"
+        }
+    },
+    {
+        "type": "select",
+        "label": "UF",
+        "name": "uf",
+        "dataSource": {
+            "source": "assets/estados.json"
+        }
+    },
+    {
+        "type": "select",
+        "label": "País",
+        "name": "pais",
+        "dataSource": {
+            "source": "assets/paises.json"
         }
     },
     {
         "type": "checkbox",
         "label": "Aceito os termos",
-        "name": "term",
+        "name": "aceitarTermo",
         "value": true
     },
     {
         "type": "button",
-        "label": "Save",
-        "name": "Save"
+        "label": "save",
+        "name": "Salvar"
     }
 ]
