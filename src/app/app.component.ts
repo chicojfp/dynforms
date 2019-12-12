@@ -189,9 +189,9 @@ export class AppComponent implements OnInit {
   }
 
   carregar(name: string) {
-    this.http.get<any>('/assets/forms/' + name + '.json').pipe(tap(p => {
+    this.http.get<any>(this.urlAssets + '/forms/' + name + '.json').pipe(tap(p => {
       this.regConfig = p;
-      this.recuperarDados()
+      this.recuperarDados();
       // console.log(p)
   })).subscribe();
   }
