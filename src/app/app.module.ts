@@ -16,6 +16,7 @@ import { CheckboxComponent } from "./components/checkbox/checkbox.component";
 import { DynamicFieldDirective } from "./components/dynamic-field/dynamic-field.directive";
 import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
 import { HttpClientModule } from "@angular/common/http";
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { HttpClientModule } from "@angular/common/http";
     CommonModule,
     RouterModule
   ],
-  providers: [],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent],
   entryComponents: [
     InputComponent,

@@ -10,7 +10,7 @@
         "type": "select",
         "req": true,
         "dataSource": {
-            "source": "http://localhost:4200/assets/classes.json"
+            "source": "assets/classes.json"
         }
     },
     {

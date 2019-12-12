@@ -8,17 +8,16 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   @ViewChild(DynamicFormComponent, { static: true }) form: DynamicFormComponent;
   valuesString: string;
   config = '';
-  urlAssets = ''
+  urlAssets = '';
 
   constructor(private http: HttpClient, location: Location) {
-    this.urlAssets =  location.prepareExternalUrl('/assets/');
+    this.urlAssets =  location.prepareExternalUrl('assets');
   }
 
   regConfig: FieldConfig[] = [
@@ -189,6 +188,7 @@ export class AppComponent implements OnInit {
   }
 
   carregar(name: string) {
+    console.log(this.urlAssets);
     this.http.get<any>(this.urlAssets + '/forms/' + name + '.json').pipe(tap(p => {
       this.regConfig = p;
       this.recuperarDados();
