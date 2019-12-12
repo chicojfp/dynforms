@@ -62,7 +62,7 @@
         "label": "Cidade",
         "name": "cidade",
         "dataSource": {
-            "source": "/assets/cidades.json"
+            "source": "assets/cidades.json"
         }
     },
     {

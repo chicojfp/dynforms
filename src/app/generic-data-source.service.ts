@@ -18,6 +18,8 @@ export class GenericDataSourceService {
       url = 'dynforms/';
     }
 
+    console.log("URL: " + url);
+
     this._url = value;
     if (!this.items) {
       this.http.get(this._url).subscribe(items => this.items = items);

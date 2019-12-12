@@ -193,6 +193,9 @@ export class AppComponent implements OnInit {
     if (environment.production) {
       url = 'dynforms/';
     }
+
+    console.log("URL: " + url);
+
     this.http.get<any>(url + 'assets/forms/' + name + '.json').pipe(tap(p => {
       this.regConfig = p;
       this.recuperarDados();
