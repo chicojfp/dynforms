@@ -191,7 +191,7 @@ export class AppComponent implements OnInit {
   carregar(name: string) {
     let url = '';
     if (environment.production) {
-      url = 'dynforms/';
+      // url = 'dynforms/';
     }
 
     console.log("URL: " + url);

@@ -20,7 +20,7 @@ export class GenericDataSourceService {
 
     console.log("URL: " + url);
 
-    this._url = value;
+    this._url = url + value;
     if (!this.items) {
       this.http.get(this._url).subscribe(items => this.items = items);
     }
