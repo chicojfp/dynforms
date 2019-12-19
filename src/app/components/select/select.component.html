@@ -1,4 +1,4 @@
-<mat-form-field class="select-field demo-full-width margin-top" [formGroup]="group">
+<mat-form-field class="select-field demo-full-width margin-top dyn-form-{{field.name}}" [formGroup]="group">
   <mat-select [placeholder]="field.label" [formControlName]="field.name">
     <mat-option *ngFor="let item of (getList() | async)" [value]="getId(item)">{{getDescription(item)}}</mat-option>
   </mat-select>

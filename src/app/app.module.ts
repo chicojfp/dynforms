@@ -1,5 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -14,6 +16,7 @@ import { CheckboxComponent } from "./components/checkbox/checkbox.component";
 import { DynamicFieldDirective } from "./components/dynamic-field/dynamic-field.directive";
 import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
 import { HttpClientModule } from "@angular/common/http";
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common'
 
 @NgModule({
   declarations: [
@@ -33,9 +36,11 @@ import { HttpClientModule } from "@angular/common/http";
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent],
   entryComponents: [
     InputComponent,

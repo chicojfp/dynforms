@@ -20,7 +20,7 @@ import { FieldConfig, Validator } from "../../field.interface";
   selector: "dynamic-form",
   template: `
   <form class="dynamic-form" [formGroup]="form" (submit)="onSubmit($event)">
-  <ng-container class="dyn-flex-item" *ngFor="let field of fields;" dynamicField [field]="field" [group]="form">
+  <ng-container class="dyn-flex-item " *ngFor="let field of fields;" dynamicField [field]="field" [group]="form">
   <br>
   </ng-container>
   </form>
@@ -29,15 +29,28 @@ import { FieldConfig, Validator } from "../../field.interface";
 })
 export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() fields: FieldConfig[] = [];
-
+  @Input() set value(value) {
+    this.fillValues(value);
+  }
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
-
   form: FormGroup;
 
   get value() {
-    return this.form.value;
+    return this.form ? this.form.value: "";
   }
+
   constructor(private fb: FormBuilder, private fieldService: FieldParserService) {}
+
+  fillValues(value: any) {
+    Object.getOwnPropertyNames(value).forEach(pName => {
+      const property = this.form.controls[pName];
+      if (property) {
+        property.setValue(value[pName]);
+      }
+
+      // console.log(pName + "   " + value[pName]);
+    });
+  }
 
   ngOnInit() {
     this.form = this.createControl();

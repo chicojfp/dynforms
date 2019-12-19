@@ -1,7 +1,10 @@
+import { Location, PathLocationStrategy, LocationStrategy } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
 import { FieldConfig } from './field.interface';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +12,14 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild(DynamicFormComponent, { static: true }) form: DynamicFormComponent;
+  valuesString: string;
+  config = '';
+  urlAssets = '';
 
-  @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+  constructor(private http: HttpClient, location: Location) {
+    this.urlAssets =  location.prepareExternalUrl('assets');
+  }
 
   regConfig: FieldConfig[] = [
     {
@@ -80,7 +89,7 @@ export class AppComponent implements OnInit {
       dataSource: {
         options: ['Masculino', 'Feminino'],
       },
-      value: 'Male'
+      value: 'Masculino'
     },
     {
       type: 'date',
@@ -115,7 +124,7 @@ export class AppComponent implements OnInit {
       name: 'cidade',
       // value: 'UK',
       dataSource: {
-        source: '/assets/cidades.json'
+        source: 'assets/cidades.json'
       }
     },
     {
@@ -124,7 +133,7 @@ export class AppComponent implements OnInit {
       name: 'uf',
       // value: 'UK',
       dataSource: {
-        source: '/assets/estados.json'
+        source: 'assets/estados.json'
       }
     },
     {
@@ -133,7 +142,7 @@ export class AppComponent implements OnInit {
       name: 'pais',
       // value: 'UK',
       dataSource: {
-        source: '/assets/paises.json'
+        source: 'assets/paises.json'
       }
     },
     {
@@ -149,17 +158,22 @@ export class AppComponent implements OnInit {
     }
   ];
 
-  config = '';
 
   submit(value: any) {}
 
   public recuperarDados() {
     this.config = JSON.stringify(this.regConfig, null, '    ');
+    this.valuesString = JSON.stringify(this.form.value, null, '    ');
   }
 
   public updateForm() {
     this.regConfig = JSON.parse(this.config);
-    console.log(this.regConfig);
+    this.valuesString = JSON.stringify(this.form.value, null, '    ');
+  }
+
+  public addValues() {
+    // this.values =
+    this.form.value = JSON.parse(this.valuesString);
   }
 
   ngOnInit() {
@@ -168,5 +182,17 @@ export class AppComponent implements OnInit {
 
   getCurrentFormValue() {
     return JSON.stringify(this.form.value, null, '    ');
+  }
+
+  loadData() {
+    this.addValues();
+  }
+
+  carregar(name: string) {
+    this.http.get<any>('assets/forms/' + name + '.json').pipe(tap(p => {
+      this.regConfig = p;
+      this.recuperarDados();
+      // console.log(p)
+  })).subscribe();
   }
 }
