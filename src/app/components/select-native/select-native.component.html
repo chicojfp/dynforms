@@ -1,0 +1,5 @@
+<span class="select-field demo-full-width margin-top dyn-form-{{field.name}}" [formGroup]="group">
+  <select  [formControlName]="field.name" >
+    <option *ngFor="let item of (getList() | async)" [value]="getId(item)">{{getDescription(item)}}</option>
+  </select>
+</span>

@@ -1,3 +1,4 @@
+import { SelectNativeComponent } from './components/select-native/select-native.component';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
@@ -18,12 +19,23 @@ import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.com
 import { HttpClientModule } from "@angular/common/http";
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common'
 
+const componentMapper = {
+  input: InputComponent,
+  button: ButtonComponent,
+  select: SelectComponent,
+  selectnative: SelectNativeComponent,
+  date: DateComponent,
+  radiobutton: RadiobuttonComponent,
+  checkbox: CheckboxComponent
+};
+
 @NgModule({
   declarations: [
     AppComponent,
     InputComponent,
     ButtonComponent,
     SelectComponent,
+    SelectNativeComponent,
     DateComponent,
     RadiobuttonComponent,
     CheckboxComponent,
@@ -38,14 +50,17 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
     FormsModule,
     HttpClientModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    RouterModule.forRoot([])
   ],
-  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy},
+    { provide: 'typeMapper', useValue: componentMapper }],
   bootstrap: [AppComponent],
   entryComponents: [
     InputComponent,
     ButtonComponent,
     SelectComponent,
+    SelectNativeComponent,
     DateComponent,
     RadiobuttonComponent,
     CheckboxComponent

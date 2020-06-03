@@ -1,10 +1,11 @@
 import { Location, PathLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FieldConfig } from './field.interface';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
-import { environment } from 'src/environments/environment';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,23 @@ export class AppComponent implements OnInit {
   config = '';
   urlAssets = '';
 
-  constructor(private http: HttpClient, location: Location) {
+  protected queryParams$: Observable<any>;
+
+  constructor(private http: HttpClient, location: Location, private route: ActivatedRoute) {
     this.urlAssets =  location.prepareExternalUrl('assets');
+
+    this.queryParams$ = this.route.queryParams as Observable<any>;
+
+    this.queryParams$.pipe(tap(p => {
+      console.log(p);
+
+      if (this.form) {
+        console.log(this.form);
+        this.form.form.patchValue(p);
+      }
+
+      // this.form.fields['name'] = p.name;
+    })).subscribe();
   }
 
   regConfig: FieldConfig[] = [
